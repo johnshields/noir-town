@@ -1,0 +1,36 @@
+<h1>Add a New Tune</h1>
+<!-- Error Message -->
+<div id="error">
+    <ul>
+      <% @tune.errors.full_messages.each do |message| %>
+    <li><u><%= message %></u></li>
+    <% end %>   
+    </ul>
+</div>
+<%= form_tag tunes_path, :class => 'form' do %>
+  <%= label :tune, :title, 'Title', :class => 'col-form-label' %>
+  <%= text_field :tune, :title, :class => 'form-control' %>
+
+  <%= label :tune, :artist, 'Artist', :class => 'col-form-label' %>
+  <%= text_field :tune, :artist, :class => 'form-control' %>
+
+  <%= label :tune, :album, 'Album', :class => 'col-form-label' %>
+  <%= text_field :tune, :album, :class => 'form-control' %>
+
+  <%= label :tune, :description, 'Description', :class => 'col-form-label' %>
+  <%= text_area :tune, :description, :class => 'form-control' %>
+  <br>
+  <%= label :tune, :release_date, 'Release Date', :class => 'col-form-label' %>
+  <%= date_field :tune, :release_date, :class => 'form-control col-2 d-inline',
+    :value => Time.now.strftime('%Y-%m-%d') %>
+  <br>
+  <%= label :tune, :url, 'Emded Spotify URL', :class => 'col-form-label' %>
+  <!-- RegEx for Emded Spotify URL -->
+  <%= text_field :tune, :url, 
+    :pattern => '^(spotify:|https:\/\/[a-z]+\.spotify\.com\/)embed\/track\/.*',
+    :placeholder => 'https://open.spotify.com/embed/track/hash', 
+    :class => 'form-control' %>
+  <br><br>
+  <%= submit_tag 'Add', :class => 'btn btn-submit' %>
+  <%= link_to 'Cancel', tunes_path, :class => 'btn btn-warning' %>
+<% end %>

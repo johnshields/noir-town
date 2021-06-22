@@ -1,0 +1,33 @@
+<!-- Page for Artists -->
+<h2> Tunes by <u><stong><%= @tune.artist %></stong></u></h2>
+
+<table class="table table-striped col-md-12" id="tunes">
+  <thread>
+    <tr>
+      <th>Title</th>
+      <th>Album</th>
+      <th>Release Date</th>
+      <th>More Info</th>
+    </tr>
+  </thread>
+  <tbody>
+    <% @tunes_by_artist.each do |tune| %>
+      <tr>
+        <td>
+          <%= tune.title %>
+        </td>
+        <td>
+          <%= tune.album %>
+        </td>
+        <% if not tune.release_date.blank? %>
+        <td><%= Date.parse(tune.release_date.to_s) %></td>
+        <% end %> 
+        <td>
+          <%= link_to "More about '#{tune.title}'", tune_path(tune) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Home Page', tunes_path, :class => 'btn btn-primary col-2' %>

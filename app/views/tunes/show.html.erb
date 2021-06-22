@@ -1,0 +1,55 @@
+<h1>Details about <u><strong><%= @tune.title %></strong></u></h1>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @tune.artist %>
+</p>
+<% if @tune.artist.blank? %>
+  <p id="blank"> No artist info provided :( </p>
+<% end %>
+
+<p>
+  <strong>Album:</strong>
+  <%= @tune.album %>
+</p>
+<% if @tune.album.blank? %>
+  <p id="blank"> No album info provided :( </p>
+<% end %>
+
+<strong>Description:</strong>
+<p id="description">
+  <%= @tune.description %>
+</p>
+<% if @tune.description.blank? %>
+  <p id="blank"> No description provided :( </p>
+<% end %>
+
+<strong>Release date:</strong>
+<% if @tune.release_date.blank? %>
+  <p id="blank"> Unknown release date </p>
+<% else %>
+<p>
+  <%= Date.parse(@tune.release_date.to_s) %>
+</p>
+<% end %>
+
+<!-- Spofity preview -->
+<!-- Ref: https://developer.spotify.com/documentation/widgets/generate/embed/ -->
+<strong>Listen to a preview:</strong>
+   <% if @tune.url.blank? %>
+     <p id="blank"> No preview available :( </p>
+   <% else %>
+   <p>
+     <iframe src="<%= @tune.url %>" allow="encrypted-media" 
+             width="300" height="250" frameborder="0" title="preview"
+             allowtransparency="true" allow="encrypted-media">
+     </iframe>
+   </p>
+  <% end %>
+<!-- Go to Artist's page for tune -->
+<%= link_to "Tunes by #{@tune.artist}", artist_path, :class => 'btn btn-artist col-2' %>
+<div class="row">
+    <%= link_to 'Back', tunes_path, :class => 'btn btn-blue col-2' %>    
+    <%= link_to 'Edit', edit_tune_path(@tune), :class => 'btn btn-primary col-2' %>
+    <%= link_to 'Remove', @tune, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-danger col-2' %>
+</div>

@@ -1,0 +1,62 @@
+<!-- Home Page - All Tunes -->
+<p id="notice"><% notice %></p>
+<h1>
+    All Tunes 
+    <%= link_to 'Add a new Tune', new_tune_path, :class => 'btn btn-new' %>
+</h1>
+<div id="search">
+    <% if @tunes.blank? %>
+       <p id="blank"> <%= params[:search] %> not found :( </p>
+    <% end %>
+    <!-- Search box -->
+    <%= form_tag tunes_path, :method => 'get' do %>
+        <%= text_field_tag :search, params[:search], 
+        :placeholder => 'Search by' %>
+    <!-- Search box filter -->
+    <!-- Ref: https://apidock.com/rails/ActionView/Helpers/FormTagHelper/select_tag -->
+    <%=
+        select_tag(:option, options_for_select([['Title', 1], ['Artist', 2], 
+        ['Album', 3]], params[:option]), :id => 'select',)
+    %>
+     <%= submit_tag 'Search' %>
+    <% end %>
+</div>
+<table class="table table-striped col-md-12" id="tunes">
+  <thead>
+    <tr>
+      <th class="<%= 'hilite' if @sort == 'title' %>" id="title">
+          <%= link_to 'Title', tunes_path(:sort => 'title'), 
+              id: 'title_header', :class => 'sorter' %>
+      </th>
+      <th class="<%= 'hilite' if @sort == 'artist' %>">
+          <%= link_to 'Artist', tunes_path(:sort => 'artist'), 
+              id: 'artist_header', :class => 'sorter' %>
+      </th>
+      <th class="<%= 'hilite' if @sort == 'album' %>" id="rd">
+          <%= link_to 'Album', tunes_path(:sort => 'album'), 
+              id: 'album_header', :class => 'sorter' %>
+      </th>
+        
+      <th class="<%= 'hilite' if @sort == 'release_date' %>" id="rd">
+          <%= link_to 'Release Date', tunes_path(:sort => 'release_date'), 
+              id: 'release_date_header', :class => 'sorter' %>
+      </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tunes.each do |tune| %>
+      <tr>
+        <td><%= tune.title %></td>
+        <td><%= tune.artist %></td>
+        <td><%= tune.album %></td>
+        <% if not tune.release_date.blank? %>
+        <td><%= Date.parse(tune.release_date.to_s) %></td>
+        <% end %> 
+        <td class="check-out">
+            <%= link_to 'Check out', tune %>
+        </td>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,132 @@
+img#logo {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+table#tunes th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #343a40;
+    color: white;
+}
+
+table#tunes th.hilite {
+    background-color: #5b4599;
+}
+
+div#search {
+    padding-bottom: 5px;
+}
+
+th#title {
+   min-width: 250px;
+}
+
+th#rd {
+   min-width: 120px;  
+}
+
+div#error {
+   color: #993434;
+}
+
+p#blank {
+   color: #378596;
+}
+
+.sorter {
+   color: white;
+}
+
+.sorter:hover {
+   color: white;
+}
+
+.check-out {
+   width: 100px;
+}
+
+table#tunes td, #tunes th {
+   border: 2px solid #000000;
+   padding: 8px;
+}
+
+.btn-blue {
+    background-color: #4f79a8;
+    border-color: #4f79a8;
+    color: white;
+    font-size: 20px;
+}
+
+.btn-blue:hover {
+    background-color: #30547c;
+    border-color: #30547c;
+    color: white;
+}
+
+.btn-primary {
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #343a40;
+    border-color: #343a40;
+    min-width: 180px;
+    font-size: 20px;
+}
+
+.btn-primary:hover {
+    background-color: #0f1d38;
+    border-color: #2c3f63;
+}
+
+.btn-new {
+    background-color: #343a40;
+    border-color: #343a40;
+    color: white;
+}
+
+.btn-new:hover {
+    color: white;
+    background-color: #0f1d38;
+    border-color: #2c3f63;
+}
+
+.btn-artist {
+    text-decoration: underline;
+    min-width: 500px;
+    color: #5b4599;
+    margin-bottom: 10px;
+    text-align: left;
+    box-shadow:none !important;
+}
+
+.btn-artist:hover {
+    text-decoration: underline;
+    opacity: 0.7;
+}
+
+.btn-submit {
+    background-color: #5b4599;
+    color: white;
+    font-size: 20px
+}
+
+.btn-warning {
+    font-size: 20px;
+    color: white;
+}
+
+.btn-danger {
+    font-size: 20px;
+}
+
+.btn-danger:hover {
+    background-color: #993434;   
+}
